@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>4 section page</title>
+        <style>
+            body
+             {
+                margin: 10;
+                background-color: blue;
+            }
+            .section {
+                border: 2px solid white;
+                width: 50%;
+                height: 50%;
+                text-align: center;
+                padding: 10px;
+                background-color: blueviolet;
+                margin: 10;
+            }
+        </style>
+    </head>
+    <h1>Lab 4 - </h1>
+    <body>
+
+        <div class="section">
+            <form id="alert-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <button type="submit">Alert Me</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <button id="color-button">Change Color</button>
+        </div>
+
+        <aside class="section">
+            <form id="text-form">
+                <label for="text-input">
+                    Text Tester:</label>
+                <input type="text" id="text-input" required>
+                <button type="submit">Validate Text</button>
+            </form>
+        </aside>
+
+        <aside class="section">
+            <button id="add-text-button">Add Text</button>
+        </aside>
+
+
+        <script>
+            document.getElementById('alert-form').onsubmit = function(texting1) 
+            {
+                texting1.preventDefault();
+                var name = document.getElementById('name').value;
+                alert('Hi ' + name + '!');
+            }
+
+           isBlue = true;
+            document.getElementById('color-button').onclick = function() 
+            {
+                if (isBlue == true) 
+                {
+                    document.body.style.backgroundColor = 'green';
+                } 
+                else 
+                {
+                    document.body.style.backgroundColor = 'blue';
+                }
+                isBlue = !isBlue;
+            }
+
+            document.getElementById('text-form').onsubmit = function(sub)
+             {
+               // sub.preventDefault();
+                var textInput = document.getElementById('text-input').value;
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if (validation.test(textInput)) {
+                    sub.preventDefault();
+                    alert('Nah No Special Character Allowed');
+                }
+
+            }
+            //video shows "Adding Text" not "Add Text"
+            document.getElementById('add-text-button').onclick = function() 
+            {
+                var heading = document.querySelector('h1');
+                heading.innerHTML += ' Add Text';
+            }
+        </script>
+
+    </body>
+</html>
